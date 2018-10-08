@@ -6,5 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Working with branches';
+  public title = 'Working with branches';
+  public isAuth = false;
+
+  public appareilOne ="Machine à laver";
+  public appareilTwo="Frigo";
+  public appareilTree="Ordinateur";
+
+  constructor(){
+
+    // tempo simulation auth api
+    setTimeout(
+      ()=>{
+        this.isAuth=true;
+      },4000
+    )
+
+  }
+
+  public onAllumer(){
+
+  }
+
 }
