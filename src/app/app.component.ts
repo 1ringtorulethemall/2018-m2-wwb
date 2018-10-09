@@ -5,26 +5,38 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   public title = 'Working with branches';
   public isAuth = false;
 
-  public appareilOne ="Machine à laver";
-  public appareilTwo="Frigo";
-  public appareilTree="Ordinateur";
+  public appareils = [
+    {
+      name: "Machine à laver",
+      status: 'éteint'
+    },
+    {
+      name: "Frigo",
+      status: 'allumé'
+    },
+    {
+      name: "Ordinateur",
+      status: 'éteint'
+    },
+  ]
 
-  constructor(){
+  constructor() {
 
     // tempo simulation auth api
     setTimeout(
-      ()=>{
-        this.isAuth=true;
-      },4000
+      () => {
+        this.isAuth = true;
+      }, 4000
     )
 
   }
 
-  public onAllumer(){
+  public onAllumer() {
 
   }
 
