@@ -6,25 +6,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title = 'Working with branches';
-  public isAuth = false;
+  public title : string = 'Working with branches';
+  public isAuth : boolean = false;
 
-  public appareilOne ="Machine à laver";
-  public appareilTwo="Frigo";
-  public appareilTree="Ordinateur";
+  public lastUpdate : any;
 
-  constructor(){
+  public appareilOne : string = "Machine à laver";
+  public appareilTwo : string = "Frigo";
+  public appareilTree : string = "Ordinateur";
+
+  constructor() {
 
     // tempo simulation auth api
     setTimeout(
-      ()=>{
-        this.isAuth=true;
-      },4000
+      () => {
+        this.isAuth = true;
+      }, 4000
     )
+
+    this.lastUpdate = new Promise((resolve, reject) => {
+      const date = new Date();
+      setTimeout(()=>{
+        resolve(date)
+      },2000)
+    })
 
   }
 
-  public onAllumer(){
+  public onAllumer() {
 
   }
 
