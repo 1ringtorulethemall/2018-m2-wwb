@@ -16,9 +16,7 @@
       <h2>Mes appareils</h2>
       <p>Mis à jour : {{lastUpdate | async | date:'yMMMMEEEEd' | uppercase}}</p>
       <ul>
-        <app-appareil [appareilName]="appareilOne" [appareilStatus]="'éteint'"></app-appareil>
-        <app-appareil [appareilName]="appareilTwo" [appareilStatus]="'allumé'"></app-appareil>
-        <app-appareil [appareilName]="appareilTree" [appareilStatus]="'éteint'"></app-appareil>
+        <app-appareil *ngFor="let a of appareils" [appareilName]="a.name" [appareilStatus]="a.status"></app-appareil>
       </ul>
       <button class="btn btn-success" [disabled]="!isAuth" (click)="onAllumer()">Tout allumer</button>
     </div>

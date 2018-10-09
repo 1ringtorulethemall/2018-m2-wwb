@@ -5,15 +5,26 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   public title : string = 'Working with branches';
   public isAuth : boolean = false;
 
   public lastUpdate : any;
-
-  public appareilOne : string = "Machine à laver";
-  public appareilTwo : string = "Frigo";
-  public appareilTree : string = "Ordinateur";
+  public appareils = [
+    {
+      name: "Machine à laver",
+      status: 'éteint'
+    },
+    {
+      name: "Frigo",
+      status: 'allumé'
+    },
+    {
+      name: "Ordinateur",
+      status: 'éteint'
+    },
+  ]
 
   constructor() {
 
