@@ -27,5 +27,13 @@ export class AppareilService {
     }
   }
 
+  public switchOnOne(i : number){
+    this.appareils[i].status='allumé'
+  }
+
+  public switchOffOne(i : number){
+    this.appareils[i].status='éteint'
+  }
+
 
 }
