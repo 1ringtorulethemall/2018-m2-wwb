@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AppareilService } from './services/appareil.service'
 
 @Component({
   selector: 'app-root',
@@ -6,27 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   public title : string = 'Working with branches';
   public isAuth : boolean = false;
 
   public lastUpdate : any;
-  public appareils = [
-    {
-      name: "Machine à laver",
-      status: 'éteint'
-    },
-    {
-      name: "Frigo",
-      status: 'allumé'
-    },
-    {
-      name: "Ordinateur",
-      status: 'éteint'
-    },
-  ]
-
-  constructor() {
+  public appareils : any[];
+  constructor(private appareilService: AppareilService) {
 
     // tempo simulation auth api
     setTimeout(
@@ -44,8 +31,17 @@ export class AppComponent {
 
   }
 
-  public onAllumer() {
+  ngOnInit() {
+    this.appareils= this.appareilService.appareils;
+  }
 
+  public onAllumer() {
+      this.appareilService.switchOnAll();
+  }
+
+  public onEteindre() {
+    if(confirm('Etes-vous sûr de vouloir éteindre tous vos appareils ?'))
+      this.appareilService.switchOffAll();
   }
 
 }
