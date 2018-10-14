@@ -10,6 +10,7 @@ import { AppareilService } from './services/appareil.service';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './auth/auth.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component'
+import { AuthGuard } from './services/auth-guard.service'
 
 import { Routes, RouterModule } from '@angular/router';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
@@ -17,7 +18,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 
 const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
-  { path: 'appareils', component: AppareilViewComponent },
+  { path: 'appareils', canActivate: [AuthGuard], component: AppareilViewComponent },
   { path: 'appareils/:id', component: SingleAppareilComponent },
   { path: '', component: AuthComponent },
   { path: 'not-found', component: FourOhFourComponent },
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     AppareilService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
