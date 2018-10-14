@@ -1,4 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="auth">Authentification</a></li>
+        <li routerLinkActive="active"><a routerLink="appareils">Appareils</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div style="text-align:center">
   <h1>
     Etudiants de master m2
@@ -13,15 +22,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2>Mes appareils</h2>
-      <p>Mis à jour : {{lastUpdate | async | date:'yMMMMEEEEd' | uppercase}}</p>
-      <ul>
-        <app-appareil *ngFor="let a of appareils; let i = index"
-        [appareilName]="a.name"
-        [appareilStatus]="a.status" [index]="i"></app-appareil>
-      </ul>
-      <button class="btn btn-success" [disabled]="!isAuth" (click)="onAllumer()">Tout allumer</button>
-      <button class="btn btn-danger" [disabled]="!isAuth" (click)="onEteindre()">Tout éteindre</button>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
