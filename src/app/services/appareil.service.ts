@@ -28,7 +28,7 @@ export class AppareilService {
     }
   }
 
-  public emitAppareilSubject(){
+  public emitAppareilSubject() {
     this.appareilsSubject.next(this.appareils.slice());
   }
 
@@ -53,6 +53,19 @@ export class AppareilService {
       }
     );
     return appareil;
+  }
+
+  public addAppareil(name: string, status: string) {
+    const appareilObject = {
+      id: 0,
+      name: '',
+      status: ''
+    };
+    appareilObject.name = name;
+    appareilObject.status = status;
+    appareilObject.id = this.appareils[(this.appareils.length - 1)].id + 1;
+    this.appareils.push(appareilObject);
+    this.emitAppareilSubject();
   }
 
 
