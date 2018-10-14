@@ -1,4 +1,8 @@
+import { Subject } from 'rxjs';
+
 export class AppareilService {
+
+  appareilsSubject = new Subject<any[]>();
 
   public appareils = [
     {
@@ -24,6 +28,10 @@ export class AppareilService {
     }
   }
 
+  public emitAppareilSubject(){
+    this.appareilsSubject.next(this.appareils.slice());
+  }
+
   public switchOffAll() {
     for (let a of this.appareils) {
       a.status = 'éteint'
@@ -38,9 +46,9 @@ export class AppareilService {
     this.appareils[i].status = 'éteint'
   }
 
-  public getAppareilById(id:number) : any{
+  public getAppareilById(id: number): any {
     const appareil = this.appareils.find(
-      (s)=>{
+      (s) => {
         return s.id === id
       }
     );
