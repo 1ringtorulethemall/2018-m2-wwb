@@ -19,7 +19,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 const appRoutes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'appareils', canActivate: [AuthGuard], component: AppareilViewComponent },
-  { path: 'appareils/:id', component: SingleAppareilComponent },
+  { path: 'appareils/:id', canActivate: [AuthGuard], component: SingleAppareilComponent },
   { path: '', component: AuthComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' }
